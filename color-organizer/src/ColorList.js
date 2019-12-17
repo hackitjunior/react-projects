@@ -1,13 +1,15 @@
 import React from "react";
+import { useColors } from "./color-hooks";
 import Color from "./Color";
 
-export default function ColorList({ colors = [], onRemoveColor = f => f  }) {
+export default function ColorList() {
+  const { colors } = useColors();
   return (
-    <div>
+    <div className="color-list">
       {colors.length === 0 ? (
         <p>No Colors Listed. (Add a Color)</p>
       ) : (
-        colors.map(color => <Color key={color.id} {...color} onRemove={onRemoveColor}/>)
+        colors.map(color => <Color key={color.id} {...color} />)
       )}
     </div>
   );
